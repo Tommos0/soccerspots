@@ -1,17 +1,6 @@
-import {
-    AppRegistry,
-    StyleSheet,
-    Text,
-    View,
-    Image,
-    Dimensions
-} from 'react-native';
+import { Text, View, Dimensions } from 'react-native';
 
-import Svg,{
-    G,
-    Path,
-    Rect,
-} from 'react-native-svg';
+import Svg,{ Path } from 'react-native-svg';
 
 import Logo from './logo';
 
@@ -19,10 +8,7 @@ import React, { Component } from 'react';
 let width= Dimensions.get('window').width;
 let height= Dimensions.get('window').height;
 
-const InitScreen = React.createClass({
-    render: function() {
-
-        return (
+export default props =>
             <View style={{width:width,height:height}}>
                 <View style={{backgroundColor:'green', position:"absolute", left:0, top:0}}>
                     <Svg width={width} height={height}>
@@ -33,32 +19,8 @@ const InitScreen = React.createClass({
                 <View style={{flex: 1, flexDirection: 'column', alignItems: 'center'}}>
                     <View style={{flex:1}} />
                     <View style={{flex:3, alignItems:'center'}}>
-                        <Logo />
+                        <Logo scale="1.5"/>
                         <Text style={{color:'white', fontSize:24, marginTop:30}}>SOCCERSPOTS</Text>
                     </View>
-
-                    {/*<View style={{flex:2}} />*/}
-
-
                 </View>
-
             </View>
-        )
-    }
-});
-
-
-export default InitScreen;
-
-const triangle = {
-        width: 0,
-        height: 0,
-        backgroundColor: 'transparent',
-        borderStyle: 'solid',
-        borderLeftWidth: .5*width,
-        borderRightWidth: .5*width,
-        borderBottomWidth: 1*height,
-        borderLeftColor: 'transparent',
-        borderRightColor: 'transparent',
-        borderBottomColor: 'red'
-};

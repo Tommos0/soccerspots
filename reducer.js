@@ -1,7 +1,8 @@
 import { combineReducers }  from 'redux';
+import router from './components/router/reducer';
 
 const rootReducer = combineReducers({
-    dummy : (state = {test : 'bla'},action) => state
+    router
 });
 
 export default rootReducer;

@@ -1,38 +1,19 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {
-    AppRegistry,
-    StyleSheet,
-    Text,
-    View,
-    Button
-} from 'react-native';
+
+import { View } from 'react-native';
+
 const stateToProps = (state) => {
     return {
-        state : state
+        route : state.router.route
     };
 };
 
-const dispatchToProps = {
+const router = props =>
+    <View>
+        {React.Children.map(props.children,child => child.props.name === props.route ? child : null)}
+    </View>;
 
-};
+export default connect(stateToProps) (router)
 
-
-
-export default class extends connect(stateToProps, dispatchToProps) (props =>
-{
-    return <View><Text>{JSON.stringify(props)}</Text></View>
-}
-){
-    componentWillMount() {
-        console.log(this.props);
-        console.log('router will mount');
-        this.store.dispatch({type:'testaction'});
-    }
-};
-
-export class Route extends React.component {
-    constructor() {
-        super();
-    }
-}
+export const Route = props => props.children;
