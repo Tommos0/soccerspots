@@ -4,7 +4,7 @@ import Svg, { Path, Circle, G} from 'react-native-svg';
 
 const icon = (name, color) => {
     switch (name) {
-        case 'field'    : return <G stroke={color} stroke-width="2" fill="none" fill-rule="evenodd" stroke-linecap="square"><Circle cx="11" cy="9" r="3"/><Path d="M0 5h4v8H0M22 5h-4v8h4M11 12v6M11 0v6"/><Path d="M0 0h22v18H0z"/></G>;
+        case 'field'    : return <G transform={{translateY:3}} stroke={color} stroke-width="2" fill="none" fill-rule="evenodd" stroke-linecap="square"><Circle cx="11" cy="9" r="3"/><Path d="M0 5h4v8H0M22 5h-4v8h4M11 12v6M11 0v6"/><Path d="M0 0h22v18H0z"/></G>;
         case 'calendar' : return <G stroke={color} stroke-width="2" fill="none" fill-rule="evenodd" stroke-linecap="square"><Path d="M23 9v14H1V9M1 3h22v6H1zM12 1v4M6 1v4M18 1v4"/><Path d="M5 13h2v1H5zM11 13h2v1h-2zM5 18h2v1H5zM11 18h2v1h-2zM17 13h2v1h-2z"/></G>;
         case 'zoom'     : return <G stroke={color} stroke-width="2" fill="none" fill-rule="evenodd" stroke-linecap="square"><Path d="M21 21l-5.6-5.6"/><Circle cx="9" cy="9" r="9"/></G>;
         case 'trophy'   : return <G stroke={color} stroke-width="2" fill="none" fill-rule="evenodd"><Path d="M5.29 11H4c-1.657 0-3-1.343-3-3V3h4M18.71 11H20c1.657 0 3-1.343 3-3V3h-4"/><Path d="M12 20v-4M12 16c-3.866 0-7-3.134-7-7V1h14v8c0 3.866-3.134 7-7 7zM17 23H7c0-1.657 1.343-3 3-3h4c1.657 0 3 1.343 3 3z" stroke-linecap="square"/></G>;

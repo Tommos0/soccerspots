@@ -9,11 +9,11 @@ const stateToProps = (state) => {
     };
 };
 
-const router = props =>
-    <View>
-        {React.Children.map(props.children,child => child.props.name === props.route ? child : null)}
-    </View>;
+const router = props => {
+    console.log('rendering');
+    return props.name === props.route ? React.Children.only(props.children) : null;
+};
 
 export default connect(stateToProps) (router)
 
-export const Route = props => props.children;
+// export const Route = props => props.children;

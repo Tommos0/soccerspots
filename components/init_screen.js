@@ -3,7 +3,6 @@ import { Text, View, Dimensions } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
 
 import Logo from './logo';
-import Icon from './icon';
 import React, { Component } from 'react';
 
 let width  = Dimensions.get('window').width;
@@ -21,7 +20,6 @@ export default props =>
             <View style={{flex:1}} />
             <View style={{flex:3, alignItems:'center'}}>
                 <Logo scale="1"/>
-                <Icon icon="trophy" color="white" />
                 <Text style={{fontFamily:'Rajdhani-Bold', color:'white', fontSize:28, marginTop:30}}>SOCCERSPOTS</Text>
             </View>
         </View>

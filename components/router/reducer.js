@@ -9,7 +9,7 @@ export default (state=defaultState, action) =>
 {
     switch (action.type) {
         case actions.setPage.name :
-            return { ...state, route:action.route, params:action.params};
+            return { ...state, route:action.page, params:action.params};
         default:
             return state;
     }
