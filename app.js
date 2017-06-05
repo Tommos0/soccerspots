@@ -15,11 +15,13 @@ export default props =>
                 <InitScreen/>
             </Route>
             <View style={{ flex:1, flexDirection:'column'}} >
-                <View style={{flex : 1, backgroundColor:'green'}}><Text>Header</Text></View>
-                <Route name="home">
-                    <View style={{flex : 12, backgroundColor:'red'}}><Text>Home</Text></View>
-                </Route>
-                <View style={{flex : 1, backgroundColor:'white'}}>
+                <View style={{flex : 1}}><Text>Header</Text></View>
+                <View style={{flex : 12, backgroundColor:"#ccc"}}>
+                    <Route name="home">
+                        <Text>Home</Text>
+                    </Route>
+                </View>
+                <View style={{flex : 1}}>
                         <Navigation />
                 </View>
             </View>
