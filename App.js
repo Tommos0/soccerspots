@@ -12,18 +12,20 @@ import Navigation from './components/navigation';
 import Route from './components/router/router';
 
 export default class App extends React.Component {
-    compomentWillMount() {
+    componentWillMount() {
         this.state = { fontsLoaded: false }
     }
-    componentDidMount() {
-        Font.loadAsync({
+    async componentDidMount() {
+        await Font.loadAsync({
             'Rajdhani-Bold': require('./assets/fonts/Rajdhani-Bold.ttf'),
             'Rajdhani-Regular': require('./assets/fonts/Rajdhani-Regular.ttf')
-        }).then(() => this.setState({fontsLoaded: true}));
+        });
+        console.log('fonts loaded');
+        this.setState({fontsLoaded: true})
 
     }
     render() {
-        if (!this.state.fontsLoaded) { return null; }
+        if (!this.state.fontsLoaded) { return <View /> }
         return (
             <Provider store={store}>
                 <View style={{flex:1}}>
