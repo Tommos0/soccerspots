@@ -1,2 +1,0 @@
-# soccerspots
-Soccerspots - Amsterdam
