@@ -89,7 +89,7 @@ export default class Map extends React.Component {
 
 
 
-                </View>
+                </View>`
 
             </View>
         )

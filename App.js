@@ -13,7 +13,7 @@ import Route from './components/router/router';
 
 import Search from "./components/search";
 import Map from "./components/map";
-
+import SpotDetail from './components/spotdetail';
 
 
 export default class App extends React.Component {
@@ -48,6 +48,9 @@ export default class App extends React.Component {
                             </Route>
                             <Route name="calendar">
                                 <Map />
+                            </Route>
+                            <Route name="trophy">
+                                <SpotDetail />
                             </Route>
                         </View>
                         <View style={{flex : 1}}>
