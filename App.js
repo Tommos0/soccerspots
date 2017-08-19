@@ -12,7 +12,9 @@ import Navigation from './components/navigation';
 import Route from './components/router/router';
 
 export default class App extends React.Component {
-
+    compomentWillMount() {
+        this.state = { fontsLoaded: false }
+    }
     componentDidMount() {
         Font.loadAsync({
             'Rajdhani-Bold': require('./assets/fonts/Rajdhani-Bold.ttf'),
