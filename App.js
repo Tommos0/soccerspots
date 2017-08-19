@@ -5,11 +5,17 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import store from './store';
 
-import { Text, View } from 'react-native';
+import {ScrollView, Text, View} from 'react-native';
 
 import InitScreen from './components/init_screen';
 import Navigation from './components/navigation';
 import Route from './components/router/router';
+
+import Card from './components/card';
+
+import { Dimensions } from "react-native";
+
+
 
 export default class App extends React.Component {
     componentWillMount() {
@@ -25,6 +31,7 @@ export default class App extends React.Component {
 
     }
     render() {
+        let height = Dimensions.get('window').height;
         if (!this.state.fontsLoaded) { return <View /> }
         return (
             <Provider store={store}>
@@ -37,6 +44,19 @@ export default class App extends React.Component {
                         <View style={{flex : 12, backgroundColor:"#ccc"}}>
                             <Route name="home">
                                 <Text>Home</Text>
+                            </Route>
+                            <Route name="search">
+                                <ScrollView  style={{height: 'auto'}}>
+                                    <Card style={{height: height/3}} name="Voetbalpleintje" />
+                                    <Card style={{height: height/3}} name="Voetbalpleintje2" />
+                                    <Card style={{height: height/3}} name="Voetbalpleintje3" />
+                                    <Card style={{height: height/3}} name="Voetbalpleintje3" />
+                                    <Card style={{height: height/3}} name="Voetbalpleintje3" />
+                                    <Card style={{height: height/3}} name="Voetbalpleintje3" />
+                                    <Card style={{height: height/3}} name="Voetbalpleintje3" />
+                                    <Card style={{height: height/3}} name="Voetbalpleintje3" />
+                                    <Card style={{height: height/3}} name="Voetbalpleintje3" />
+                                </ScrollView>
                             </Route>
                         </View>
                         <View style={{flex : 1}}>
