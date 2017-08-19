@@ -1,5 +1,5 @@
 import 'expo';
-import { Font } from 'expo';
+import {Font, MapView} from 'expo';
 import React from 'react';
 
 import { Provider } from 'react-redux';
@@ -11,9 +11,8 @@ import InitScreen from './components/init_screen';
 import Navigation from './components/navigation';
 import Route from './components/router/router';
 
-import Card from './components/card';
-
-import { Dimensions } from "react-native";
+import Search from "./components/search";
+import Map from "./components/map";
 
 
 
@@ -31,7 +30,6 @@ export default class App extends React.Component {
 
     }
     render() {
-        let height = Dimensions.get('window').height;
         if (!this.state.fontsLoaded) { return <View /> }
         return (
             <Provider store={store}>
@@ -46,17 +44,10 @@ export default class App extends React.Component {
                                 <Text>Home</Text>
                             </Route>
                             <Route name="search">
-                                <ScrollView  style={{height: 'auto'}}>
-                                    <Card style={{height: height/3}} name="Voetbalpleintje" />
-                                    <Card style={{height: height/3}} name="Voetbalpleintje2" />
-                                    <Card style={{height: height/3}} name="Voetbalpleintje3" />
-                                    <Card style={{height: height/3}} name="Voetbalpleintje3" />
-                                    <Card style={{height: height/3}} name="Voetbalpleintje3" />
-                                    <Card style={{height: height/3}} name="Voetbalpleintje3" />
-                                    <Card style={{height: height/3}} name="Voetbalpleintje3" />
-                                    <Card style={{height: height/3}} name="Voetbalpleintje3" />
-                                    <Card style={{height: height/3}} name="Voetbalpleintje3" />
-                                </ScrollView>
+                                <Search />
+                            </Route>
+                            <Route name="calendar">
+                                <Map />
                             </Route>
                         </View>
                         <View style={{flex : 1}}>

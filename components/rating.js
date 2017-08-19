@@ -42,10 +42,9 @@ const styles = StyleSheet.create({
     margin: {
         marginLeft:3,
         marginRight:3,
-        // backgroundColor:'green'
     },
     circleFilled : {
-        backgroundColor:"#000"
+        backgroundColor:"green"
     },
     circleEmpty : {
         backgroundColor:"#ccc"
