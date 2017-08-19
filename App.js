@@ -14,6 +14,7 @@ import Route from './components/router/router';
 import Search from "./components/search";
 import Map from "./components/map";
 import SpotDetail from './components/spotdetail';
+import * as expo from "expo";
 
 
 export default class App extends React.Component {
@@ -38,7 +39,7 @@ export default class App extends React.Component {
                         <InitScreen/>
                     </Route>
                     <View style={{ flex:1, flexDirection:'column'}} >
-                        <View style={{flex : 1}}><Text>Header</Text></View>
+                        <View style={{height: expo.Constants.statusBarHeight}}/>
                         <View style={{flex : 12, backgroundColor:"#ccc"}}>
                             <Route name="home">
                                 <Text>Home</Text>

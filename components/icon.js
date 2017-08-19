@@ -11,7 +11,12 @@ const icon = (name, color) => {
         case 'settings' : return <G stroke={color} stroke-width="2" fill="none" fill-rule="evenodd" stroke-linecap="square"><Path d="M22 13V9h-3.262c-.19-.732-.477-1.422-.852-2.058l2.306-2.306-2.828-2.828-2.306 2.306c-.636-.375-1.326-.663-2.058-.852V0H9v3.262c-.732.19-1.422.477-2.058.852L4.636 1.808 1.808 4.636l2.306 2.306C3.74 7.578 3.45 8.268 3.262 9H0v4h3.262c.19.732.477 1.422.852 2.058l-2.306 2.306 2.828 2.828 2.306-2.306c.635.375 1.326.663 2.058.852V22h4v-3.262c.732-.19 1.422-.477 2.058-.852l2.306 2.306 2.828-2.828-2.306-2.306c.375-.635.663-1.326.852-2.058H22z"/><Circle cx="11" cy="11" r="3"/></G>;
         case 'user'     : return <G stroke={color} stroke-width="2" fill="none" fill-rule="evenodd"><Path d="M11 15c-2.21 0-4-1.79-4-4V9c0-2.21 1.79-4 4-4s4 1.79 4 4v2c0 2.21-1.79 4-4 4z" stroke-linecap="square"/><Path d="M17.102 20.154C16.002 18.86 14.332 18 12.5 18h-3c-1.847 0-3.5.835-4.6 2.147"/><Circle stroke-linecap="square" cx="11" cy="11" r="11"/></G>;
         case 'map'      : return <G stroke={color} stroke-width="2" fill="none" fill-rule="evenodd"><Path d="M14.5 5.9L22 4v15l-8 2-6-2-8 2V6l7-1.7"/><Circle stroke-linecap="square" cx="11" cy="4" r="4"/><Path d="M11 8v5" stroke-linecap="square"/></G>;
+        case 'addspot-action': return <G transform={{scale: .37}} fill="none" fill-rule="evenodd"><Circle fill="#2BA84A" cx="32" cy="32" r="32"/><Path d="M32 17c-5.9 0-12 4.5-12 12 0 7.1 10.8 18.2 11.3 18.7.2.2.4.3.7.3.3 0 .5-.1.7-.3C33.2 47.2 44 36.2 44 29c0-7.5-6.1-12-12-12zm4 13h-3v3c0 .6-.4 1-1 1s-1-.4-1-1v-3h-3c-.6 0-1-.4-1-1s.4-1 1-1h3v-3c0-.6.4-1 1-1s1 .4 1 1v3h3c.6 0 1 .4 1 1s-.4 1-1 1z" fill-rule="nonzero" fill="#FFF"/></G>
     }
 };
 
-export default props => <Svg width="24" height="24">{icon(props.icon,props.color || 'black')}</Svg>
+export default props => <Svg width={24*(props.scale || 1)} height={24*(props.scale || 1)}>
+        <G transform={{scale: props.scale || 1}}>
+            {icon(props.icon, props.color || 'black')}
+        </G>
+    </Svg>

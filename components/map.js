@@ -1,7 +1,9 @@
 import React from 'react';
-import {MapView} from "expo";
+import {LinearGradient, MapView} from "expo";
 import { Constants, Location, Permissions } from 'expo';
 import {Button, Text, View} from 'react-native';
+const SvgUri = require('react-native-svg-uri');
+import Icon from './icon';
 
 const LOCATION_STATUS = {
     WAITING: 0,
@@ -80,17 +82,7 @@ export default class Map extends React.Component {
                         description="description"
                     />
                 </MapView>
-
-                <View style={{flex:1, position:'absolute'}}>
-                    <Button title="testje" />
-                        <View style={{width:200, height:200, backgroundColor:'green'}}>
-                </View>
-
-
-
-
-                </View>`
-
+                <LinearGradient style={{position:'absolute', width:'100%', height:'10%'}} colors={[ 'rgba(255,255,255,1)',  'rgba(255,255,255,.6)', 'rgba(255,255,255,0)' ]} />
             </View>
         )
     }
