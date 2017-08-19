@@ -14,44 +14,72 @@ import {
 
 export default class SpotDetail extends React.Component {
     render() {
-        return
-        <View style= {styles.SpotDetailContainer}>
+        return (
+          <View style= {styles.SpotDetailContainer}>
 
           <View style= {styles.HeaderContainer}>
-            <View style= {styles.SpotDetailHeader}>
-              <View style= {styles.UtilityNav}>
-                //BackIcon here
+                <Text style= {styles.HeaderTitleText}>Spot detail</Text>
+              <View style= {styles.NavIconContainer}>
+                <Text>back</Text>
               </View>
-              <View style= {styles.HeaderTitle}>
-                <Text styles= {styles.HeaderTitleText}>Spot details</Text>
-              </View>
-            </View>
           </View>
 
           <View style= {styles.MapsContainer}>
-            //Maps component here
+          <Text>map image</Text>
           </View>
 
-          <View style= {styles.SpotDetailInfo}>
-            <View style= {styles.SpotDetailInfoContainer}>
-            </View>
-            //SpotTitle Rating Distance components here
+          <View style= {styles.SpotDetailInfoContainer}>
+            <Text>spot detail info</Text>
           </View>
 
           <View style= {styles.SpotTypes}>
-            //Types component here
+          <Text>spot style types</Text>
           </View>
 
           <View style= {styles.SpotImageContainer}>
-            //SpotImage component here
+          <Text>spot image</Text>
           </View>
         </View>
+        )
     }
 }
 
 const styles = StyleSheet.create({
   SpotDetailContainer: {
-    flex: 1
+    flex: 1,
+  },
+  HeaderContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  HeaderTitleText: {
+    fontFamily: 'Rajdhani-Bold',
+    fontSize: 20
+  },
+  NavIconContainer: {
+    position: 'absolute',
+    height: '100%',
+    width: '15%',
+    flex: 1,
+    left: 0,
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  MapsContainer: {
+    flex: 3,
+  },
+  SpotDetailInfoContainer: {
+    flex: 2,
+  },
+  SpotTypes: {
+    flex: 1,
+  },
+  SpotImageContainer: {
+    flex: 3,
   }
+
 
 });
