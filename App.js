@@ -40,7 +40,7 @@ export default class App extends React.Component {
                     </Route>
                     <View style={{ flex:1, flexDirection:'column'}} >
                         <View style={{height: expo.Constants.statusBarHeight}}/>
-                        <View style={{flex : 12, backgroundColor:"#ccc"}}>
+                        <View style={{flex : 12, backgroundColor:"#fff"}}>
                             <Route name="home">
                                 <Text>Home</Text>
                             </Route>

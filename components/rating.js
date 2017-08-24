@@ -17,7 +17,7 @@ export default class Rating extends React.Component {
                        radius={10}
                    />
                )}
-               <Text style={{marginLeft: 5}}>{this.props.score} / 5</Text>
+               <Text style={[styles.text,{marginLeft: 5}]}>{this.props.score} / 5</Text>
            </View>
         </View>;
     }
@@ -39,6 +39,11 @@ class Circle extends React.Component {
 
 
 const styles = StyleSheet.create({
+    text: {
+        fontFamily: 'Rajdhani-Bold',
+        fontSize: 16,
+        color: '#c1c1c1'
+    },
     margin: {
         marginLeft:3,
         marginRight:3,
@@ -50,7 +55,7 @@ const styles = StyleSheet.create({
         backgroundColor:"#ccc"
     },
     title: {
-        fontSize: 19,
+        fontSize: 16,
         fontWeight: 'bold',
     },
     activeTitle: {
