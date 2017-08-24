@@ -8,7 +8,7 @@ const defaultState = {
 export default (state=defaultState, action) =>
 {
     switch (action.type) {
-        case actions.setPage.name :
+        case "SET_PAGE" :
             return { ...state, route:action.page, params:action.params};
         default:
             return state;

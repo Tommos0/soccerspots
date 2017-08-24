@@ -1,1 +1,1 @@
-export const setPage = ({page, params}) => ({type:'setPage', page:page, params:params});
+export const setPage = ({page, params}) => ({type:'SET_PAGE', page:page, params:params});

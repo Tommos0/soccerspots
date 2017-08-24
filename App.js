@@ -1,21 +1,13 @@
 import 'expo';
-import {Font, MapView} from 'expo';
+import {Font } from 'expo';
 import React from 'react';
 
 import { Provider } from 'react-redux';
 import store from './store';
 
-import {ScrollView, Text, View} from 'react-native';
+import {View} from 'react-native';
 
-import InitScreen from './components/init_screen';
-import Navigation from './components/navigation';
-import Route from './components/router/router';
-
-import Search from "./components/search";
-import Map from "./components/map";
-import SpotDetail from './components/spotdetail';
-import * as expo from "expo";
-
+import Main from './Main';
 
 export default class App extends React.Component {
     componentWillMount() {
@@ -34,31 +26,7 @@ export default class App extends React.Component {
         if (!this.state.fontsLoaded) { return <View /> }
         return (
             <Provider store={store}>
-                <View style={{flex:1}}>
-                    <Route name="init">
-                        <InitScreen/>
-                    </Route>
-                    <View style={{ flex:1, flexDirection:'column'}} >
-                        <View style={{height: expo.Constants.statusBarHeight}}/>
-                        <View style={{flex : 12, backgroundColor:"#ccc"}}>
-                            <Route name="home">
-                                <Text>Home</Text>
-                            </Route>
-                            <Route name="search">
-                                <Search />
-                            </Route>
-                            <Route name="calendar">
-                                <Map />
-                            </Route>
-                            <Route name="trophy">
-                                <SpotDetail />
-                            </Route>
-                        </View>
-                        <View style={{flex : 1}}>
-                                <Navigation />
-                        </View>
-                    </View>
-                </View>
+                <Main />
             </Provider>
         );
     }
