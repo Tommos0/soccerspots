@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Cardinfo from './cardinfo';
+
 import {
     AppRegistry,
     StyleSheet,
@@ -29,7 +31,7 @@ export default class SpotDetail extends React.Component {
           </View>
 
           <View style= {styles.SpotDetailInfoContainer}>
-            <Text>spot detail info</Text>
+            <Cardinfo name='Meester Visser Veldje' />
           </View>
 
           <View style= {styles.SpotTypes}>
@@ -69,10 +71,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   MapsContainer: {
-    flex: 3,
+    flex: 4,
   },
   SpotDetailInfoContainer: {
     flex: 2,
+    backgroundColor: 'red'
   },
   SpotTypes: {
     flex: 1,
