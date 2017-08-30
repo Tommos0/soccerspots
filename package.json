@@ -6,7 +6,8 @@
   "private": true,
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "react-devtools": "react-devtools"
+    "react-devtools": "react-devtools",
+    "start": "react native start --port 19001"
   },
   "dependencies": {
     "expo": "^20.0.0",

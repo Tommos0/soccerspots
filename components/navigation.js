@@ -38,6 +38,6 @@ const navigation = props =>
 
 export default class extends connect(stateToProps,dispatchToProps) (navigation) {
     componentWillMount() {
-        setTimeout(_ => this.store.dispatch(routeActions.setPage({page:'home'})),2000);
+        setTimeout(_ => this.store.dispatch(routeActions.setPage({page:'calendar'})),2000);
     }
 }

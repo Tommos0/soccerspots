@@ -1,93 +1,176 @@
 import React from 'react';
 import {LinearGradient, MapView} from "expo";
-import { Constants, Location, Permissions } from 'expo';
-import {Button, Text, View} from 'react-native';
-const SvgUri = require('react-native-svg-uri');
-import Icon from '../icon';
+import {Button, Text, View, ScrollView, Dimensions, TouchableHighlight, StyleSheet} from 'react-native';
+import { connect } from 'react-redux';
+import IconButton from '../IconButton';
+import ButtonGroup from '../ButtonGroup';
 
-const LOCATION_STATUS = {
-    WAITING: 0,
-    GRANTED: 1,
-    DENIED: 2
-};
+const width  = Dimensions.get('window').width;
+const height = Dimensions.get('window').height;
 
-export default class Map extends React.Component {
+const mapStateToProps = (state) => console.log(state) || ({
+   location: state.location.coords
+});
+
+const MapOverlay = (props) => (
+    <View style={{position: 'absolute', width:'100%'}}>
+        <Text>blabla</Text>
+    </View>
+);
+
+class MapComponent extends React.Component {
     componentWillMount() {
-        this.setState({location: null, locationStatus: LOCATION_STATUS.WAITING});
-    }
-    componentDidMount() {
-        this.getLocationAsync();
-    }
-
-    promiseTimeout = (time) => new Promise((resolve, reject) => {
-        let wait = setTimeout(() => {
-            clearTimeout(wait);
-            resolve();
-        }, 100);
-    });
-
-
-
-    getLocationAsync = async () => {
-        let { status } = await Permissions.askAsync(Permissions.LOCATION);
-        if (status !== 'granted') {
-            this.setState({
-                locationStatus: LOCATION_STATUS.DENIED
-            });
+        this.state = {
+            mapView: false,
+            fieldUnderground: 1,
+            fieldSize: 1
         }
+    }
 
-        let location = await Promise.race([
-            Location.getCurrentPositionAsync({}),
-            this.promiseTimeout(500)
-        ]);
+    toggleView = () => {
+        this.setState({mapView: !this.state.mapView})
+    }
 
-        this.setState({ location: location, locationStatus: LOCATION_STATUS.GRANTED });
-    };
+    map = () => (
+        <View style={{flex:1}}>
+            <MapView
+                onRegionChangeComplete={console.log}
+                style={{flex:1}}
+                showsUserLocation
+                zoomEnabled={this.state.mapView}
+                scrollEnabled={this.state.mapView}
+                initialRegion={{
+                    latitude: this.props.location.latitude,
+                    longitude: this.props.location.longitude,
+                    latitudeDelta: 0.01,
+                    longitudeDelta: 0.01
+                }}
+            >
+                <MapView.Marker
+                    draggable={true}
+                    coordinate={{
+                        latitude: 52.4,
+                        longitude: 4.9
+                    }}
+                    title="title"
+                    description="description"
+                />
+            </MapView>
+            <LinearGradient style={{position:'absolute', width:'100%', height:'10%'}} colors={[ 'rgba(255,255,255,1)',  'rgba(255,255,255,.6)', 'rgba(255,255,255,0)' ]} />
+            {!this.state.mapView && MapOverlay()}
+        </View>
+    );
+
+    settings = () => (
+        <View style={{flex:.5}}>
+            <Text style={style.text}>Select the type of underground</Text>
+            <ButtonGroup active={this.state.fieldUnderground} onChange={(value) => this.setState({fieldUnderground: value})}>
+                <IconButton style={{backgroundColor:'grey'}} value={1} />
+                <IconButton style={{backgroundColor:'#888'}} value={2} />
+                <IconButton style={{backgroundColor:'red'}} value={3} />
+                <IconButton style={{backgroundColor:'blue'}} value={4} />
+            </ButtonGroup>
+
+            <Text style={style.text}>Select the size of the field</Text>
+            <ButtonGroup active={this.state.fieldSize} onChange={(value) => this.setState({fieldSize: value})}>
+                <IconButton value={1} />
+                <IconButton value={2} />
+                <IconButton value={3} />
+                <IconButton value={4} />
+            </ButtonGroup>
+
+            <Text style={style.text}>Select the size of the field</Text>
+            <ButtonGroup active={this.state.fieldSize} onChange={(value) => this.setState({fieldSize: value})}>
+                <IconButton value={1} />
+                <IconButton value={2} />
+                <IconButton value={3} />
+                <IconButton value={4} />
+            </ButtonGroup>
+
+            <Text style={style.text}>Select the size of the field</Text>
+            <ButtonGroup active={this.state.fieldSize} onChange={(value) => this.setState({fieldSize: value})}>
+                <IconButton value={1} />
+                <IconButton value={2} />
+                <IconButton value={3} />
+                <IconButton value={4} />
+            </ButtonGroup>
+
+            <Text style={style.text}>Select the size of the field</Text>
+            <ButtonGroup active={this.state.fieldSize} onChange={(value) => this.setState({fieldSize: value})}>
+                <IconButton value={1} />
+                <IconButton value={2} />
+                <IconButton value={3} />
+                <IconButton value={4} />
+            </ButtonGroup>
+
+            <Text style={style.text}>Select the size of the field</Text>
+            <ButtonGroup active={this.state.fieldSize} onChange={(value) => this.setState({fieldSize: value})}>
+                <IconButton value={1} />
+                <IconButton value={2} />
+                <IconButton value={3} />
+                <IconButton value={4} />
+            </ButtonGroup>
+
+
+            <Text style={style.text}>Select the size of the field</Text>
+            <ButtonGroup active={this.state.fieldSize} onChange={(value) => this.setState({fieldSize: value})}>
+                <IconButton value={1} />
+                <IconButton value={2} />
+                <IconButton value={3} />
+                <IconButton value={4} />
+            </ButtonGroup>
+
+            <Text style={style.text}>Select the size of the field</Text>
+            <ButtonGroup active={this.state.fieldSize} onChange={(value) => this.setState({fieldSize: value})}>
+                <IconButton value={1} />
+                <IconButton value={2} />
+                <IconButton value={3} />
+                <IconButton value={4} />
+            </ButtonGroup>
+
+            <Text style={style.text}>Select the size of the field</Text>
+            <ButtonGroup active={this.state.fieldSize} onChange={(value) => this.setState({fieldSize: value})}>
+                <IconButton value={1} />
+                <IconButton value={2} />
+                <IconButton value={3} />
+                <IconButton value={4} />
+            </ButtonGroup>
+        </View>
+    );
 
     render() {
-        if (this.state.locationStatus === LOCATION_STATUS.WAITING) return <View />;
-
-        let initialRegion;
-        if (this.state.location) {
-            initialRegion = {
-                latitude: this.state.location.coords.latitude,
-                longitude: this.state.location.coords.longitude,
-                latitudeDelta: 0.01,
-                longitudeDelta: 0.01
-            }
-        }
-        else {
-            initialRegion = {
-                latitude: 52.4,
-                longitude: 4.9,
-                latitudeDelta: 0.1,
-                longitudeDelta: 0.1
-            }
-        }
-
-        return (
+        if (this.state.mapView) return (
             <View style={{flex:1}}>
-                <MapView
-                    style={{flex:1}}
-                    showsUserLocation
-                    zoomEnabled={true}
-                    initialRegion={initialRegion}
-                >
-                    <MapView.Marker
-                        draggable={true}
-                        coordinate={{
-                            latitude: 52.4,
-                            longitude: 4.9
-                        }}
-                        title="title"
-                        description="description"
-                    />
-                </MapView>
-                <LinearGradient style={{position:'absolute', width:'100%', height:'10%'}} colors={[ 'rgba(255,255,255,1)',  'rgba(255,255,255,.6)', 'rgba(255,255,255,0)' ]} />
+                {this.map()}
             </View>
+        );
+
+        else return (
+            <ScrollView style={{flex:1, flexDirection:'column'}}>
+                <TouchableHighlight style={{flex: 1}} onPress={this.toggleView} >
+                    <View style={{height:height/3, backgroundColor:'yellow'}}>
+                        {this.map()}
+                    </View>
+                </TouchableHighlight>
+                {this.settings()}
+            </ScrollView>
         )
     }
 }
+
+export default connect(mapStateToProps)(MapComponent);
+
+const style = StyleSheet.create({
+    text: {
+        fontFamily: 'Rajdhani-Regular',
+        fontSize: 16,
+        color: '#888',
+
+    },
+    active: {
+        borderColor: 'green'
+    }
+});
 
 
 
