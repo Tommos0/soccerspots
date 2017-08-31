@@ -10,6 +10,7 @@ import Route from './components/router/router';
 import Search from "./components/search";
 import NewSpot from "./components/new_spot/NewSpot";
 import SpotDetail from './components/spotdetail';
+import Login from './components/Login';
 import * as expo from "expo";
 
 import { init } from './actions';
@@ -39,13 +40,13 @@ class MainComponent extends React.Component {
                     <View style={{height: expo.Constants.statusBarHeight}}/>
                     <View style={{flex : 12}}>
                         <Route name="home">
-                            <Text>Home</Text>
+                            <Login />
                         </Route>
                         <Route name="search">
                             <Search />
                         </Route>
                         <Route name="calendar">
-                            {<NewSpot />}
+                            <NewSpot />
                         </Route>
                         <Route name="trophy">
                             <SpotDetail />
